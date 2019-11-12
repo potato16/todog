@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: ToDogColors.kabul,
-        primaryColor: ToDogColors.bbb,
+        unselectedWidgetColor: Colors.white,
+        primaryColor: ToDogColors.orange,
       ),
       home: HomePage(),
     );

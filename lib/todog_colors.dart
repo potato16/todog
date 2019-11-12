@@ -9,6 +9,7 @@ class ToDogColors {
   static const Color valencia = Color(0xFFD54939); //#D54939
   static const Color kabul = Color(0xFF3b2b30); //#3b2b30
   static const Color anzac = Color(0xFFE19248); //#E19248
-  static const Color aaa = Color(0xFF438A76); //#438A76
-  static const Color bbb = Color(0xFFF68054); //#f68054
+  static const Color viridian = Color(0xFF438A76); //#438A76
+  static const Color orange = Color(0xFFF68054); //#f68054
+  static const Color yellow = Color(0xFFFCC96F); //#FCC96F
 }

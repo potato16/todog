@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "244736434424",
+    "firebase_url": "https://todog-509a9.firebaseio.com",
+    "project_id": "todog-509a9",
+    "storage_bucket": "todog-509a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244736434424:android:7f52473b26c5b1ef551b0d",
+        "android_client_info": {
+          "package_name": "com.example.todog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244736434424-mpb7vhfvrkp6ve3ur88p5hlt09bjpkl4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.todog",
+            "certificate_hash": "73e01a21a994542f440c73c9ee8e40a90778e0e0"
+          }
+        },
+        {
+          "client_id": "244736434424-1jpu19m5lp60dg06roi2i254j8af3i8l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDogsOaI-YboVfdKzbFRfnQjfiI2U_Qk8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244736434424-1jpu19m5lp60dg06roi2i254j8af3i8l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
