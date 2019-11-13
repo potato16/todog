@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage>
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 180));
     translate = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(curve: Curves.easeInOut, parent: controller),
+      CurvedAnimation(curve: Curves.linearToEaseOut, parent: controller),
     );
     translate
       ..addListener(() {
