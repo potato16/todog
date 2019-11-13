@@ -40,7 +40,7 @@ class TodogListBloc extends BlocBase {
         .orderBy('created_time', descending: true)
         .snapshots()
         .listen((snap) => _todogListController.sink.add(snap.documents
-            .map((f) => ToDogObj.fromJson(f.data)..id = f.documentID)
+            .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
             .toList()));
   }
 
@@ -60,7 +60,7 @@ class TodogListBloc extends BlocBase {
         .where('time_complete', isNull: true)
         .snapshots()
         .listen((snap) => _todogListImcompleteController.sink.add(snap.documents
-            .map((f) => ToDogObj.fromJson(f.data)..id = f.documentID)
+            .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
             .toList()));
   }
 
@@ -70,7 +70,7 @@ class TodogListBloc extends BlocBase {
         .where('time_complete', isGreaterThanOrEqualTo: Timestamp(100, 100))
         .snapshots()
         .listen((snap) => _todogListCompleteController.sink.add(snap.documents
-            .map((f) => ToDogObj.fromJson(f.data)..id = f.documentID)
+            .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
             .toList()));
   }
 }

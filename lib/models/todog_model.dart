@@ -1,16 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 class ToDogObj extends Object {
-  String id;
+  final String id;
   final String title;
   final int duration; // in minutes
   final DateTime timeComplete;
   final DateTime createdTime;
   final int color;
-  ToDogObj({this.title, this.duration, this.timeComplete, this.color})
+  ToDogObj(
+      {@required this.id,
+      this.title,
+      this.duration,
+      this.timeComplete,
+      this.color})
       : createdTime = DateTime.now();
-  ToDogObj.fromJson(Map<String, dynamic> json)
-      : title = json['title'],
+  ToDogObj.fromJson(Map<String, dynamic> json, {String id})
+      : id = id,
+        title = json['title'],
         duration = json['duration'],
         timeComplete = (json['time_complete'] as Timestamp)?.toDate(),
         createdTime = (json['created_time'] as Timestamp)?.toDate(),
@@ -31,7 +38,7 @@ class ToDogObj extends Object {
   @override
   bool operator ==(other) {
     if (other is ToDogObj) {
-      return other.id == this.id;
+      return other.id == null ? false : other.id == this.id;
     }
     return false;
   }

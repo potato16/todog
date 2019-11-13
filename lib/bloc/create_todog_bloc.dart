@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:todog/bloc/bloc_helpers/bloc_provider.dart';
@@ -43,20 +44,25 @@ class CreateToDogBloc extends BlocBase {
 
   void _handleCreateToDog(bool event) {
     if (event) {
-      final title = _titleController.value;
-      final duration = _durationController.value;
-      final color = _colorController.value;
-      final todog = ToDogObj(title: title, duration: duration, color: color);
+      final todog = createTodoObject();
       Firestore.instance
           .collection('todogs')
           .document()
           .setData(todog.toJson())
-          .then((onValue) => _stateController.sink.add(CreateTodogState.done))
+          .then((_) => _stateController.sink.add(CreateTodogState.done))
           .catchError((er) {
         print(er);
         _stateController.sink.add(CreateTodogState.failed);
       });
     }
+  }
+
+  @visibleForTesting
+  createTodoObject() {
+    final title = _titleController.value;
+    final duration = _durationController.value;
+    final color = _colorController.value;
+    return ToDogObj(title: title, duration: duration, color: color);
   }
 }
 
