@@ -28,14 +28,7 @@ class ProfileScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(18, 18, 0, 18),
-                            child: Text(
-                              'Activity',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 22),
-                            ),
-                          ),
+                          _buildTitleChart(title: 'Activity'),
                           Container(
                             height: 120,
                             child: Row(
@@ -100,14 +93,7 @@ class ProfileScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(18, 18, 0, 18),
-                            child: Text(
-                              'Training',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 22),
-                            ),
-                          ),
+                          _buildTitleChart(title: 'Training'),
                           _buildBar(
                               title: 'Beside',
                               color: ToDogColors.valencia,
@@ -146,14 +132,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(18, 18, 0, 18),
-                            child: Text(
-                              'Nutrition',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 22),
-                            ),
-                          ),
+                          _buildTitleChart(title: 'Nutrition'),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
@@ -251,14 +230,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(18, 18, 0, 18),
-                            child: Text(
-                              'Happiness',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 22),
-                            ),
-                          ),
+                          _buildTitleChart(title: "Happiness"),
                           CustomPaint(
                             painter: CircleChart(value: .80),
                             child: Container(
@@ -281,6 +253,16 @@ class ProfileScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding _buildTitleChart({String title}) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 18, 0, 18),
+      child: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
       ),
     );
   }
