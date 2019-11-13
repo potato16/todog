@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage>
                         width: 8,
                       ),
                       Text(
-                        'To-Dog',
+                        _selectedIndex == 3 ? 'Bibi' : 'To-Dog',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -217,6 +217,28 @@ class _HomePageState extends State<HomePage>
     }
   }
 
+  Widget _getSubtitleHeader() {
+    switch (_selectedIndex) {
+      case 0:
+        return _buildSubtitleHeader('All to-dog for the good boy!');
+
+      case 1:
+        return _buildSubtitleHeader('Imcomplete to-dog');
+      case 2:
+        return _buildSubtitleHeader('Completed to-dog! Good boy');
+    }
+    return Container();
+  }
+
+  Widget _buildSubtitleHeader(String title) {
+    return Text(
+      title,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+    );
+  }
+
   _buildTodogListScreen(Stream stream) {
     return Container(
       decoration: BoxDecoration(
@@ -241,32 +263,6 @@ class _HomePageState extends State<HomePage>
             );
           }),
     );
-  }
-
-  Widget _getSubtitleHeader() {
-    switch (_selectedIndex) {
-      case 0:
-        return Text(
-          'All to-dog for the good boy!',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        );
-      case 1:
-        return Text(
-          'Imcomplete to-dog',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        );
-      case 2:
-        return Text(
-          'Completed to-dog! Good boy',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        );
-    }
   }
 
   Widget _buildSubtitleAllScreen() {

@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'To Dog',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'PTSans',
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: ToDogColors.kabul,
         unselectedWidgetColor: Colors.white,

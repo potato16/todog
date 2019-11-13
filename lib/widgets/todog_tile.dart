@@ -123,11 +123,11 @@ class _ToDogTileState extends State<ToDogTile> {
 
   String _getTime(DateTime time) {
     if (time == null) return '';
-    return '${time.hour.toString()..padLeft(2, '0')}:${time.minute.toString()..padLeft(2, '0')}';
+    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
   }
 
   String _getDate(DateTime time) {
     if (time == null) return '';
-    return '${time.month.toString()..padLeft(2, '0')}/${time.day.toString()..padLeft(2, '0')}';
+    return '${time.month.toString().padLeft(2, '0')}/${time.day.toString().padLeft(2, '0')}';
   }
 }
