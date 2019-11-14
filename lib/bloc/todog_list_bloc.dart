@@ -29,8 +29,8 @@ class TodogListBloc extends BlocBase {
 
   TodogListBloc() {
     _fetchToDogList();
-    _fetchToDogImcompleteList();
-    _fetchToDogCompletedList();
+    // _fetchToDogImcompleteList();
+    // _fetchToDogCompletedList();
     _checkToDogController.stream.listen(_handleCheckToDo);
   }
 
@@ -39,9 +39,23 @@ class TodogListBloc extends BlocBase {
         .collection('todogs')
         .orderBy('created_time', descending: true)
         .snapshots()
-        .listen((snap) => _todogListController.sink.add(snap.documents
-            .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
-            .toList()));
+        .listen((snap) {
+      List<ToDogObj> todogs = snap.documents
+          .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
+          .toList();
+      _todogListController.sink.add(todogs);
+      _todogListCompleteController.sink
+          .add(todogs.where((test) => test.timeComplete != null).toList());
+      _todogListImcompleteController.sink
+          .add(todogs.where((test) => test.timeComplete == null).toList());
+    });
+    // Firestore.instance
+    //     .collection('todogs')
+    //     .orderBy('created_time', descending: true)
+    //     .snapshots()
+    //     .listen((snap) => _todogListController.sink.add(snap.documents
+    //         .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
+    //         .toList()));
   }
 
   void _handleCheckToDo(MapEntry<String, bool> event) {
@@ -54,23 +68,23 @@ class TodogListBloc extends BlocBase {
         .updateData({'time_complete': event.value ? Timestamp.now() : null});
   }
 
-  void _fetchToDogImcompleteList() {
-    Firestore.instance
-        .collection('todogs')
-        .where('time_complete', isNull: true)
-        .snapshots()
-        .listen((snap) => _todogListImcompleteController.sink.add(snap.documents
-            .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
-            .toList()));
-  }
+  // void _fetchToDogImcompleteList() {
+  //   Firestore.instance
+  //       .collection('todogs')
+  //       .where('time_complete', isNull: true)
+  //       .snapshots()
+  //       .listen((snap) => _todogListImcompleteController.sink.add(snap.documents
+  //           .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
+  //           .toList()));
+  // }
 
-  void _fetchToDogCompletedList() {
-    Firestore.instance
-        .collection('todogs')
-        .where('time_complete', isGreaterThanOrEqualTo: Timestamp(100, 100))
-        .snapshots()
-        .listen((snap) => _todogListCompleteController.sink.add(snap.documents
-            .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
-            .toList()));
-  }
+  // void _fetchToDogCompletedList() {
+  //   Firestore.instance
+  //       .collection('todogs')
+  //       .where('time_complete', isGreaterThanOrEqualTo: Timestamp(100, 100))
+  //       .snapshots()
+  //       .listen((snap) => _todogListCompleteController.sink.add(snap.documents
+  //           .map((f) => ToDogObj.fromJson(f.data, id: f.documentID))
+  //           .toList()));
+  // }
 }
